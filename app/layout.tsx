@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PolicyForge — AI Actuarial Engine",
+  title: "PolicyForge",
   description: "Custom group health insurance policies, priced in seconds.",
 };
 

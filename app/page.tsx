@@ -182,13 +182,16 @@ export default function ForgePage() {
 
 function Logo() {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-3">
       <div className="w-7 h-7 bg-forge-navy-light rounded-lg flex items-center justify-center">
         <span className="text-forge-blue font-bold text-xs">PF</span>
       </div>
-      <span className="text-white font-bold text-lg tracking-tight">
-        Policy<span className="text-forge-blue">Forge</span>
-      </span>
+      <div className="flex flex-col">
+        <span className="text-white font-bold text-lg tracking-tight leading-none">
+          Policy<span className="text-forge-blue">Forge</span>
+        </span>
+        <span className="text-white/50 text-xs tracking-wide">AI Policy Recommendation Engine</span>
+      </div>
     </div>
   );
 }
