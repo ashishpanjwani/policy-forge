@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #EFE3CA;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #DDD0B4; border-radius: 999px; }
+
+@media print {
+  @page { size: A4 landscape; margin: 0.6in 0.75in; }
+
+  .no-print { display: none !important; }
+
+  /* Proposal is portaled to document.body — hide everything else */
+  body.proposal-open > *:not(#proposal-root) { display: none !important; }
+  body.proposal-open #proposal-root {
+    position: static !important;
+    overflow: visible !important;
+    height: auto !important;
+    background: white !important;
+  }
+
+  /* Individual rows stay together; table itself can span pages */
+  body.proposal-open #proposal-root tbody tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Keep section heading glued to the content that follows it */
+  body.proposal-open #proposal-root h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Force a clean page break before the pricing methodology section */
+  body.proposal-open #proposal-root .print-page-break {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  /* Compact table cells in print — override screen padding */
+  body.proposal-open #proposal-root table td,
+  body.proposal-open #proposal-root table th {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+}
