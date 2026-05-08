@@ -39,14 +39,17 @@ export function DemographicsForm({ value, onChange }: DemographicsFormProps) {
           />
         </Field>
         <Field label="Industry">
-          <select
-            value={value.industry}
-            onChange={(e) => set("industry", e.target.value)}
-            className={inputClass}
-          >
-            <option value="">Select industry</option>
-            {INDUSTRIES.map((i) => <option key={i}>{i}</option>)}
-          </select>
+          <SelectWrapper>
+            <select
+              value={value.industry}
+              onChange={(e) => set("industry", e.target.value)}
+              className={selectClass}
+            >
+              <option value="">Select industry</option>
+              {INDUSTRIES.map((i) => <option key={i}>{i}</option>)}
+            </select>
+            <Chevron />
+          </SelectWrapper>
         </Field>
       </div>
 
@@ -92,14 +95,17 @@ export function DemographicsForm({ value, onChange }: DemographicsFormProps) {
           </div>
         </Field>
         <Field label="Primary City">
-          <select
-            value={value.city}
-            onChange={(e) => set("city", e.target.value)}
-            className={inputClass}
-          >
-            <option value="">Select city</option>
-            {CITIES.map((c) => <option key={c}>{c}</option>)}
-          </select>
+          <SelectWrapper>
+            <select
+              value={value.city}
+              onChange={(e) => set("city", e.target.value)}
+              className={selectClass}
+            >
+              <option value="">Select city</option>
+              {CITIES.map((c) => <option key={c}>{c}</option>)}
+            </select>
+            <Chevron />
+          </SelectWrapper>
         </Field>
       </div>
 
@@ -114,6 +120,18 @@ export function DemographicsForm({ value, onChange }: DemographicsFormProps) {
         />
       </Field>
     </div>
+  );
+}
+
+function SelectWrapper({ children }: { children: React.ReactNode }) {
+  return <div className="relative">{children}</div>;
+}
+
+function Chevron() {
+  return (
+    <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-forge-navy/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
   );
 }
 
@@ -136,3 +154,6 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 
 const inputClass =
   "w-full bg-white border border-forge-beige-dark/70 rounded-lg px-3 py-2.5 text-sm text-forge-navy placeholder:text-forge-navy/30 focus:outline-none focus:border-forge-blue focus:ring-1 focus:ring-forge-blue/20 transition";
+
+const selectClass =
+  "w-full appearance-none bg-white border border-forge-beige-dark/70 rounded-lg pl-3 pr-8 py-2.5 text-sm text-forge-navy focus:outline-none focus:border-forge-blue focus:ring-1 focus:ring-forge-blue/20 transition";
